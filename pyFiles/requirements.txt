@@ -1,0 +1,15 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+dalex=1.5.0=pyhd8ed1ab_0
+joblib=1.2.0=py311h06a4308_0
+numpy=1.24.3=py311h08b1b3b_1
+numpy-base=1.24.3=py311hf175353_1
+numpydoc=1.5.0=py311h06a4308_0
+pandas=1.5.3=py311hba01205_0
+pip=23.1.2=py311h06a4308_0
+plotly=5.9.0=py311h06a4308_0
+python=3.11.3=h955ad1f_1
+scikit-learn=1.2.2=py311h6a678d5_1
+scikit-learn-intelex=2023.1.1=py311h06a4308_0
+scipy=1.10.1=py311h08b1b3b_1
