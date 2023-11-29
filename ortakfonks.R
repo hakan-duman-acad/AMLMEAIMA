@@ -1,6 +1,8 @@
 # 
 if (!require(tidyverse)) install.packages("tidyverse", 
                                           dependencies = TRUE)
+if (!require(ggforce)) install.packages("ggforce", 
+                                          dependencies = TRUE)
 
 # uygun paketlerde birden fazla CPU kullanmak için
 if (!require(doParallel)) install.packages("doParallel", 

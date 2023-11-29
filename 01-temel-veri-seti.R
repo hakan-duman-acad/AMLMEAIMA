@@ -156,9 +156,9 @@ if (!require(reticulate)) install.packages("reticulate",
                                            dependencies = TRUE)
 # Eğer kurulu değilse mini conda kurulmalı
 # veya use_condaenv() komutu ile mevcut bir conda ortamı seçilmeli
-install_miniconda() # bir kez çalıştıktan sonra comment olarakişaretlenmeli
+# install_miniconda() # bir kez çalıştıktan sonra comment olarakişaretlenmeli
 # aşağıda gerekli python modüllerü kuruluyor
-paketler <- readLines("requirements.txt")
+paketler <- readLines("pyFiles/requirements.txt")
 conda_install(packages = paketler[!grepl(paketler,pattern = "^#")])
 
 source_python("pyFiles/sigirOutlier.py")
