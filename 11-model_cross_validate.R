@@ -2,7 +2,7 @@
 #                 ÇAPRAZ DOĞRULAMA ANALİZİ                 #
 ############################################################
 
-setwd("...YOL.../AMLMEAIMA")
+# setwd("...YOL...")
 # bazı yardımcı fonksiyonlar
 source("ortakfonks.R")
 
