@@ -8,3 +8,5 @@ hazırlanmış olan sahte/simüle edilmiş örnek veriler bu adres altında paya
 bağlamında oluşabilecek sorunlar göz önünde bulundurularak, yalnızca kaynak kodları
 test etmek maksadıyla kullanılmak üzere, rastgele olarak türetilmiş örnek veriler
 paylaşılmıştır. Analizlerde kullanılan orjinal verilere, aşağıdaki linklerden ulaşılabilirsiz:
+
+[İllere ait genel istatistiksel veriler. Meteroloji Genel Müdürlüğü](https://mgm.gov.tr/veridegerlendirme/il-ve-ilceler-istatistik.aspx?k=A&m=ANKARA)
