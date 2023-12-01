@@ -13,3 +13,4 @@ python=3.11.3=h955ad1f_1
 scikit-learn=1.2.2=py311h6a678d5_1
 scikit-learn-intelex=2023.1.1=py311h06a4308_0
 scipy=1.10.1=py311h08b1b3b_1
+python-kaleido=0.2.1

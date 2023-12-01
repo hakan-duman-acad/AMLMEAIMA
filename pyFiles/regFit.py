@@ -14,11 +14,13 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsRegressor
 import joblib
 
+
 class FitReg:
     def __init__(self, model, X, y):
-        self.model = joblib.load(filename="results/"+model+"_mod.pkl")
+        self.model = joblib.load(filename="results/" + model + "_mod.pkl")
         self.X = X
         self.y = y
+
     def predict(self):
         self.fitted = self.model.predict(self.X)
-        return(self.fitted)
+        return self.fitted

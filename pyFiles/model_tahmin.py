@@ -10,8 +10,9 @@ import joblib
 
 
 class ModelTahmin:
-    def __init__(self,  X):
+    def __init__(self, X):
         self.X = X
-    def predict(self, modelName = "MLR"):
-        model = joblib.load(filename = "results/"+modelName+"_mod.pkl")
+
+    def predict(self, modelName="MLR"):
+        model = joblib.load(filename="results/" + modelName + "_mod.pkl")
         return model.predict(self.X)

@@ -4,7 +4,8 @@
 
 #setwd("...YOL.../AMLMEAIMA")
 # bazı yardımcı fonksiyonlar
-source("ortakfonks.R")
+source("source_functions.R")
+source("source_maps.R")
 
 
 ############################################################
@@ -154,24 +155,17 @@ sum(ucdeger) /nrow(temel_veri_baked)
 # Kullanılacak condaenv içinde scikit-learn kurulmuş olmalıdır.
 if (!require(reticulate)) install.packages("reticulate", 
                                            dependencies = TRUE)
-# Eğer kurulu değilse mini conda kurulmalı
-# veya use_condaenv() komutu ile mevcut bir conda ortamı seçilmeli
-# install_miniconda() # bir kez çalıştıktan sonra comment olarakişaretlenmeli
-# aşağıda gerekli python modüllerü kuruluyor
-paketler <- readLines("pyFiles/requirements.txt")
-conda_install(packages = paketler[!grepl(paketler,pattern = "^#")])
-
+use_miniconda("r-reticulate")
 source_python("pyFiles/sigirOutlier.py")
 outliers = Outlier(r_to_py(temel_veri_baked %>% select(-IK) %>% select_if(is.numeric)))
 outliers$fit()
 anomalies = outliers$predict() == -1
 
-sum(anomalies)
-sum(anomalies)/nrow(temel_veri_baked)
-
-sum(ucdeger | anomalies)
-sum(ucdeger | anomalies) / nrow(temel_veri_baked)
-sum(ucdeger&anomalies)
+print(sum(anomalies))
+print(sum(anomalies)/nrow(temel_veri_baked))
+print(sum(ucdeger | anomalies))
+print(sum(ucdeger | anomalies) / nrow(temel_veri_baked))
+print(sum(ucdeger&anomalies))
 
 # uç değerler siliniyor
 newData <- temel_veri_baked[!(anomalies | ucdeger),]

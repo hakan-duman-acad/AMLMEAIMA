@@ -2,9 +2,11 @@
 #               ÇAYIR MERA ALANLARI VERİLERİ               #
 ############################################################
 
-#setwd("...YOL.../AMLMEAIMA")
-source("ortakfonks.R")
+# setwd("...YOL.../AMLMEAIMA")
 set.seed(2023)
+source("source_functions.R")
+
+
 
 ############################################################
 #                   VERİLERİN YÜKLENMESİ                   #
@@ -17,31 +19,34 @@ set.seed(2023)
 
 
 mera <- read_tsv(file = "data/caymer.tsv")
-iller <- read_tsv(file = "data/il_adlari.tsv") 
+iller <- read_tsv(file = "data/il_adlari.tsv")
 
 
 ############################################################
 #                  VERİLERİN DÜZENLENMESİ                  #
 ############################################################
 
-mera <- mera   %>% 
-  pivot_wider(names_from = c("degisken"),
-              values_from = "deger")%>% 
-  left_join(iller)  
+mera <- mera %>%
+  pivot_wider(
+    names_from = c("degisken"),
+    values_from = "deger"
+  ) %>%
+  left_join(iller)
 
 ############################################################
 #                    EKSİK VERİ ANALİZİ                    #
 ############################################################
 
-full <- mera <- mera  %>% mutate (
-  OTLO = PAS / (TARA+SEBA+MEYA) *100,
-  MERAO = MEAA / (TARA+SEBA+MEYA) *100,
-  IK=as.integer(IK)
-)  %>% 
-  rename(MERA = MEAA, OTL = PAS)  %>% 
-  select(IK,IA,MERA,MERAO,OTL,OTLO)
+full <- mera <- mera %>%
+  mutate(
+    OTLO = PAS / (TARA + SEBA + MEYA) * 100,
+    MERAO = MEAA / (TARA + SEBA + MEYA) * 100,
+    IK = as.integer(IK)
+  ) %>%
+  rename(MERA = MEAA, OTL = PAS) %>%
+  select(IK, IA, MERA, MERAO, OTL, OTLO)
 
-introText(full  %>% select(-IK,-IA))
+introText(full %>% select(-IK, -IA))
 
 eksik_plot(full)
 
@@ -56,4 +61,4 @@ stopCluster(cl)
 #          HAZIRLANAN VERİ SETİNİN KAYIT EDİLMESİ          #
 ############################################################
 
-write_rds(full,file = "data/mer.Rds", compress = "bz")
+write_rds(full, file = "data/mer.Rds", compress = "bz")

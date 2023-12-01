@@ -2,9 +2,12 @@
 #                POTANSİYEL PAZAR VERİLERİ                 #
 ############################################################
 
-#setwd("...YOL.../AMLMEAIMA")
-source("ortakfonks.R")
+# setwd("...YOL.../AMLMEAIMA")
 set.seed(2023)
+source("source_functions.R")
+source("source_maps.R")
+
+
 
 ############################################################
 #                   VERİLERİN YÜKLENMESİ                   #
@@ -17,14 +20,14 @@ set.seed(2023)
 # Root/Uzakliklar/ilmesafe.xlsx
 
 paz <- read_tsv(file = "data/potansiyal_pazar.tsv")
-iller <- read_tsv(file = "data/il_adlari.tsv") 
+iller <- read_tsv(file = "data/il_adlari.tsv")
 
 ############################################################
 #                    EKSİK VERİ ANALİZİ                    #
 ############################################################
 
-full <- paz 
-introText(full  %>% select(-IK,-IA))
+full <- paz
+introText(full %>% select(-IK, -IA))
 
 eksik_plot(full)
 
@@ -33,5 +36,4 @@ stopCluster(cl)
 #          HAZIRLANAN VERİ SETİNİN KAYIT EDİLMESİ          #
 ############################################################
 
-write_rds(full,file = "data/paz.Rds", compress = "bz")
-
+write_rds(full, file = "data/paz.Rds", compress = "bz")

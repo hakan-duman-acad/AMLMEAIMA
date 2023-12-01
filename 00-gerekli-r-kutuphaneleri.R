@@ -20,12 +20,12 @@ if (!require(doParallel)) {
 }
 if (!require(sf)) install.packages("sf", dependencies = TRUE)
 if (!require(rnaturalearth)) {
-  install.packages(
-    c(
-      "rnaturalearth", "rnaturalearthdata"
-    ),
+  install.packages("rnaturalearth",
     dependencies = TRUE
   )
+}
+if (require(rnaturalearthdata)) {
+  install.packages("rnaturalearthdata", dependencies = TRUE)
 }
 if (!require(ggthemes)) {
   install.packages("ggthemes",
@@ -42,8 +42,8 @@ if (!require("ggcorrplot")) {
     dependencies = TRUE
   )
 }
-# if (!requireNamespace("devtools")) install.packages("devtools")
-# devtools::install_github("caijun/ggcorrplot2")
+if (!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("caijun/ggcorrplot2")
 if (!require("factoextra")) {
   install.packages("factoextra",
     dependencies = TRUE
@@ -70,7 +70,11 @@ if (!require(ggfortify)) {
   )
 }
 
-if (!require(skimr)) install.packages("skimr", dependencies = TRUE)
+if (!require(skimr)) {
+  install.packages("skimr",
+    dependencies = TRUE
+  )
+}
 if (!require(reticulate)) {
   install.packages("reticulate",
     dependencies = TRUE
@@ -127,8 +131,48 @@ if (!require("coin")) {
     dependencies = TRUE
   )
 }
+
 if (!require("rcompanion")) {
-  install.packages("rcompanion",
+  install.packages("rcompanion")
+}
+
+if (!require("NbClust")) {
+  install.packages("NbClust",
     dependencies = TRUE
   )
 }
+if (!require("clValid")) {
+  install.packages("clValid",
+    dependencies = TRUE
+  )
+}
+if (!require("cluster")) {
+  install.packages("cluster",
+    dependencies = TRUE
+  )
+}
+if (!require("mclust")) {
+  install.packages("mclust",
+    dependencies = TRUE
+  )
+}
+
+if (!require("h2o")) {
+  install.packages("h2o",
+    dependencies = TRUE
+  )
+}
+tryCatch(
+  expr = {
+    install_miniconda()
+  },
+  error = function(e) {
+  },
+  warning = function(w) {
+  },
+  finally = {
+  }
+)
+use_miniconda("r-reticulate")
+paketler <- readLines("pyFiles/requirements.txt")
+conda_install(packages = paketler[!grepl(paketler, pattern = "^#")])
